@@ -34,7 +34,7 @@ export const LoginForm = () => {
 
 	return (<LoginContainer>
 		<h2>Login</h2>
-		<span>Hi, I miss you</span>
+		<span>Hi, I missed you</span>
 		<Form onSubmit={handleLogin}>
 			<Label >Email
 				<Input type="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
