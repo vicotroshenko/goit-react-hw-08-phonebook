@@ -1,13 +1,9 @@
-import {
-  Form,
-  Label,
-  Input,
-  Button,
-  FormContainer,
-} from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { getContacts } from 'redux/selectors';
+import operations from 'redux/operations';
+import { getContacts } from 'redux/contacts/selectors';
+import FormControl from '@mui/material/FormControl';
+import { Button, Input, InputLabel } from '@mui/material';
+import { StyledBoxFrom } from './ContactForm.styled';
 
 export const ContactForm = () => {
   const { items } = useSelector(getContacts);
@@ -17,7 +13,7 @@ export const ContactForm = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.elements.name.value;
-    const phone = form.elements.number.value;
+    const number = form.elements.number.value;
     form.reset();
     for (const contact of items) {
       if (contact.name.toLowerCase() === name.toLowerCase()) {
@@ -25,35 +21,26 @@ export const ContactForm = () => {
         return;
       }
     }
-    dispatch(addContact({ name, phone }));
+    dispatch(operations.addContact({ name, number }));
   };
 
   return (
-    <FormContainer>
-      <h1>Phonebook</h1>
-      <Form onSubmit={handleSubmit}>
-        <Label>
-          Name
-          <Input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </Label>
-        <Label>
-          Number
-          <Input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </Label>
-        <Button type="submit">Add contact</Button>
-      </Form>
-    </FormContainer>
+    <div>
+      <StyledBoxFrom
+        component="form"
+        onSubmit={handleSubmit}
+      >
+        <FormControl variant="standard">
+          <InputLabel htmlFor="component-name">Name</InputLabel>
+          <Input id="component-name" defaultValue="" name="name"/>
+        </FormControl>
+        <FormControl variant="standard">
+          <InputLabel htmlFor="component-number">Phone number</InputLabel>
+          <Input id="component-number" defaultValue="" name='number'/>
+        </FormControl>
+        <FormControl></FormControl>
+        <Button variant="contained" type='submit'>Add contact</Button>
+      </StyledBoxFrom>
+    </div>
   );
 };

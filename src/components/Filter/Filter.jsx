@@ -1,7 +1,8 @@
-import { Label, Subtitle } from './Filter.styled';
+import { Box, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterContact } from 'redux/filterSlice';
-import { getFilter } from 'redux/selectors';
+import { filterContact } from 'redux/contacts/filterSlice';
+import { getFilter } from 'redux/contacts/selectors';
+import { FilterBox } from './Filter.styled';
 
 export const Filter = () => {
   const filter = useSelector(getFilter);
@@ -12,19 +13,24 @@ export const Filter = () => {
   };
 
   return (
-    <div>
-      <Subtitle>Contacts</Subtitle>
-      <Label>
-        Find contacts by name
-        <input
-          type="text"
-          name="name"
+    <FilterBox>
+      <h2>Contacts</h2>
+      <Box
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 0, width: '90%'},
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          label="Search contact"
+          variant="standard"
           value={filter}
           onChange={handleFilter}
-          title="find contacts by name"
-          required
+          sx={{ borderRadius: "8px" }}
         />
-      </Label>
-    </div>
+      </Box>
+    </FilterBox>
   );
 };

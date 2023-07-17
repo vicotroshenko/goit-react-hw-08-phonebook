@@ -1,40 +1,32 @@
-import { List } from './ContactList.styled';
+import { ListItem, ListItemText } from '@mui/material';
 import { ListElements } from 'components/ListElements/ListElements';
-import { ThreeCircles } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/selectors';
+import { StyledList } from './ContactList.styled';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import BasicModal from 'components/Modal/Modal';
 
 export const ContactList = () => {
   const { items, isLoading, error } = useSelector(getContacts);
-  const loadingStyles = {
-    position: 'fixed',
-    top: 0,
-    right: 0,
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.6)',
-  };
+
   return (
-    <List>
-      {isLoading && (
-        <ThreeCircles
-          height="150"
-          width="150"
-          color="black"
-          wrapperStyle={loadingStyles}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="three-circles-rotating"
-          outerCircleColor=""
-          innerCircleColor=""
-          middleCircleColor=""
-        />
-      )}
-      {error && <p>{error}</p>}
-      {items?.length > 0 && <ListElements />}
-    </List>
+    <>
+      <StyledList component="nav">
+        {error && (
+          <ListItem disablePadding>
+            <ListItemText primary="error" />
+          </ListItem>
+        )}
+        {isLoading && (
+          <ListItem disablePadding>
+            <ListItemText primary="Loading..." />
+          </ListItem>
+        )}
+        {items?.length > 0 && <ListElements />}
+      </StyledList>
+      <BasicModal>
+        <ContactForm/>
+      </BasicModal>
+    </>
   );
 };

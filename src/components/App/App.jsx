@@ -1,25 +1,38 @@
-import { useDispatch } from 'react-redux';
-import { ContactForm } from '../ContactForm/ContactForm';
-import { ContactList } from '../ContactList/ContactList';
-import { Filter } from '../Filter/Filter';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import { Container } from './App.styled';
+import  Contacts from 'pages/Contacts'
+import ProtectedRout from 'routes/ProtectedRout'
+import Login from 'pages/Login'
+import Rergister from 'pages/Register'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import Home from 'pages/Home'
+import { selectIsLoggedIn } from 'redux/auth/selectors'
+
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const isLoggedIn  = useSelector(selectIsLoggedIn);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
+    if (isLoggedIn) {
+      navigate('/');
+    }
+  }, [isLoggedIn, navigate]);
+  
   return (
-    <Container>
-      <ContactForm />
-      <div>
-        <Filter />
-        <ContactList />
-      </div>
-    </Container>
+    <Routes>
+        <Route path="/register" element={<Rergister />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRout isLoggedIn={isLoggedIn}>
+              <Contacts />
+            </ProtectedRout>
+          }
+        />
+    </Routes>
   );
 };
