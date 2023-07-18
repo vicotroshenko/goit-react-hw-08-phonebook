@@ -9,6 +9,15 @@ export const RegisterContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	font-family: 'Yatra One', cursive;
+  animation: 800ms ease-in-out 0s 1 alternate show;
+  @keyframes show {
+    from {
+      opacity: 0.3;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `
 export const Form = styled.form`
 	display: flex;
@@ -17,6 +26,20 @@ export const Form = styled.form`
 	align-items: center;
 	width: 100%;
 	max-width: 450px;
+	animation: 800ms ease-in-out 0s 1 alternate sun-rise;
+
+@keyframes sun-rise {
+from {
+	/* pushes the sun down past the viewport */
+	opacity: 0.3;
+	transform: translateY(40%);
+}
+to {
+	/* returns the sun to its default position */
+	opacity: 1;
+	transform: translateY(0);
+}
+}
 `
 
 export const Label = styled.label`
@@ -44,3 +67,4 @@ export const ButtonBox = styled.div`
 	column-gap: 40px;
 	margin-top: 20px;
 `
+

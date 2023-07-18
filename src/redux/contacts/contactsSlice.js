@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import operations  from '../operations';
+import operations  from './operations';
 
 const handlePending = state => {
   state.isLoading = true;

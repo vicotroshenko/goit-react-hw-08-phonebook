@@ -9,10 +9,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Yatra One', cursive;
-  background-color: #E6F6F8;
   width: 100%;
-  background-image: url("./images/b.png");
-  background-size: 25%;
+  background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+  animation: gradient 30s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
 }
 
 code {
@@ -22,4 +23,16 @@ code {
 a {
   text-decoration: none;
   color: black;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 0%;
+  }
+  50% {
+      background-position: 100% 100%;
+  }
+  100% {
+      background-position: 0% 0%;
+  }
 }

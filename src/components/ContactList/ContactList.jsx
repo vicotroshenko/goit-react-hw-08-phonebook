@@ -1,4 +1,4 @@
-import { ListItem, ListItemText } from '@mui/material';
+import { ListItem, ListItemText, Box, LinearProgress } from '@mui/material';
 import { ListElements } from 'components/ListElements/ListElements';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/selectors';
@@ -17,15 +17,15 @@ export const ContactList = () => {
             <ListItemText primary="error" />
           </ListItem>
         )}
-        {isLoading && (
+        {isLoading &&  items?.length === 0 && (
           <ListItem disablePadding>
-            <ListItemText primary="Loading..." />
+            <Box sx={{width: "80%", margin: "0 auto", marginTop: 5}}><LinearProgress /></Box>
           </ListItem>
         )}
         {items?.length > 0 && <ListElements />}
       </StyledList>
       <BasicModal>
-        <ContactForm/>
+        <ContactForm />
       </BasicModal>
     </>
   );

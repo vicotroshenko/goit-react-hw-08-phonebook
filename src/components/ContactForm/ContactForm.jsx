@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import operations from 'redux/operations';
+import operations from 'redux/contacts/operations';
 import { getContacts } from 'redux/contacts/selectors';
 import FormControl from '@mui/material/FormControl';
 import { Button, Input, InputLabel } from '@mui/material';
@@ -26,20 +26,19 @@ export const ContactForm = () => {
 
   return (
     <div>
-      <StyledBoxFrom
-        component="form"
-        onSubmit={handleSubmit}
-      >
+      <StyledBoxFrom component="form" onSubmit={handleSubmit}>
         <FormControl variant="standard">
           <InputLabel htmlFor="component-name">Name</InputLabel>
-          <Input id="component-name" defaultValue="" name="name"/>
+          <Input id="component-name" defaultValue="" name="name" />
         </FormControl>
         <FormControl variant="standard">
           <InputLabel htmlFor="component-number">Phone number</InputLabel>
-          <Input id="component-number" defaultValue="" name='number'/>
+          <Input id="component-number" defaultValue="" name="number" />
         </FormControl>
         <FormControl></FormControl>
-        <Button variant="contained" type='submit'>Add contact</Button>
+        <Button variant="contained" type="submit">
+          Add contact
+        </Button>
       </StyledBoxFrom>
     </div>
   );

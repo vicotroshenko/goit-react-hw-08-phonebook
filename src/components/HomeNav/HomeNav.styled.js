@@ -8,9 +8,19 @@ export const ContainerHome = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
+	padding-top: 40px;
 	text-align: center;
 	font-family: 'Yatra One', cursive;
+	animation: 800ms ease-in-out 0s 1 alternate show;
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `
 export const RegistredBox = styled.div`
 	display: inline-block;

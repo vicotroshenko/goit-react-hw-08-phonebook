@@ -1,9 +1,9 @@
-import { Main } from "./LinearBack.styled";
+import { Main } from './LinearBack.styled';
 
 export const LinearBack = ({ children }) => {
   return (
     <Main>
-			{children}
+      {children}
       <div>
         <div className="wave"></div>
         <div className="wave"></div>

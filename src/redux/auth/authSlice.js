@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import operations from "../operations";
+import operations from "./operations";
 
 
 const initialState = {
@@ -8,7 +8,6 @@ const initialState = {
 	isLoggedIn: false,
 	isLoading: false,
 	isAuthError: false,
-	isRefreshing: false,
 };
 
 const authSlice = createSlice({

@@ -13,7 +13,7 @@ const style = {
   maxWidth: 350,
   width: "100%",
   borderRadius: 5,
-  bgcolor: 'background.paper',
+  bgcolor: '#91beeb;',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,

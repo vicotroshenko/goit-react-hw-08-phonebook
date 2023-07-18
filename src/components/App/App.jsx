@@ -16,17 +16,17 @@ export const App = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/');
+      navigate('/contacts');
     }
   }, [isLoggedIn, navigate]);
   
   return (
     <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Rergister />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
         <Route
-          path="/"
+          path="/contacts"
           element={
             <ProtectedRout isLoggedIn={isLoggedIn}>
               <Contacts />

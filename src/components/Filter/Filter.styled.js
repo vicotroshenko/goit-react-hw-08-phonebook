@@ -7,6 +7,6 @@ export const FilterBox = styled.div`
 	text-align: center;
 	margin: 0 auto;
 	padding-bottom: 20px;
-	padding-top: 80px;
+	padding-top: 50px;
 	font-family: 'Yatra One', cursive;
 `

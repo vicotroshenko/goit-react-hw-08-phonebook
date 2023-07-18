@@ -3,7 +3,6 @@ import { AppBar } from '@mui/material';
 
 export const HeaderStyled = styled(AppBar)`
  	position: fixed;
-	font-family: 'Kablammo', cursive;
  	top: 0;
 	right: 0;
  	width: 100%;
@@ -16,5 +15,7 @@ export const HeaderStyled = styled(AppBar)`
 		color: white;
 		font-size: 22px;
 		margin: 0;
+		font-family: 'Kablammo', cursive;
 	}
 `
+
