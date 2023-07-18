@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import operations from "redux/operations";
+import operations from "redux/auth/operations";
 import { LoginContainer, Form, Label, Input, ButtonBox } from "./LoginForm.styled";
 import Button from '@mui/joy/Button';
 import Box from '@mui/joy/Box';
